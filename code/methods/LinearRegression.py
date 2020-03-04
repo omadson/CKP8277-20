@@ -19,6 +19,7 @@ class LinearRegression(object):
                     error = y - X_ @ self.w.T
                     self.w = self.w + self.learning_rate * np.mean(error * X_, axis=0)
                 else:
+                    np.random.shuffle(X_)
                     for i in range(N):
                         error_i = y[[i]] - self.w.T @ X_[[i]].T
                         self.w = self.w + self.learning_rate * error_i * X_[[i]].T
